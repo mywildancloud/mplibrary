@@ -270,14 +270,14 @@ class Mp_Design_Library_Admin {
 				<h3>
 					<?php _e( 'Aktivasi Lisensi', 'mpdl' ); ?>
 						<small>
-							<a style="text-decoration: none;" href="https://user.brandmarketers.id" target="_blank" class="elementor-connect-link">
+							<a style="text-decoration: none;" href="https://user.brandmarketers.id/account" target="_blank" class="elementor-connect-link">
 								<?php _e( 'Member Area', 'mpdl' ); ?>
 							</a>
 						</small>
 				</h3>
 	                    <p><?php _e( 'Masukkan kode lisensi, untuk mengaktifkan <strong>Mp Design Library</strong>, untuk auto update, premium support dan akses Mp Design Library template library.' ); ?></p>
 	                    <ol>
-	                        <li><?php printf( __( 'Masuk <a href="%s" target="_blank">Member Area</a> untuk mendapatkan kode lisensi, kemudian copy lisensi nya.' ), 'https://user.brandmarketers.id' ); ?></li>
+	                        <li><?php printf( __( 'Masuk <a href="%s" target="_blank">Member Area</a> untuk mendapatkan kode lisensi, kemudian copy lisensi nya.' ), 'https://user.brandmarketers.id/account' ); ?></li>
 	                        <li><?php _e( __( 'Paste lisensi anda pada kolom <strong>"License Keys"</strong>.' ) ); ?></li>
 	                        <li><?php _e( __( 'Klik tombol <strong>"Activate License"</strong>.' ) ); ?></li>
 	                    </ol>
