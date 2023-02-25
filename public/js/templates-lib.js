@@ -69,7 +69,7 @@
 		}
 	});
 
-	var TemplateLibraryTemplateELPView = TemplateLibraryTemplateView.extend({
+	var TemplateLibraryTemplateMPDLView = TemplateLibraryTemplateView.extend({
 		template: '#tmpl-elementor-template-library-template-mpdl',
 		ui: function ui() {
 			return jQuery.extend(TemplateLibraryTemplateView.prototype.ui.apply(this, arguments), {
@@ -159,7 +159,7 @@
 			},
 		},
 		getChildView: function getChildView(childModel) {
-			return TemplateLibraryTemplateELPView;
+			return TemplateLibraryTemplateMPDLView;
 		},
 		initialize: function initialize() {
 			this.listenTo(elementor.channels.templates, 'filter:change', this._renderChildren);
@@ -269,7 +269,7 @@
 			this.toggleFilterClass();
 
 			if ('mpdl' === mpdl_templates_lib.templates.getFilter('source') && 'page' !== mpdl_templates_lib.templates.getFilter('type')) {
-				this.setMasonrySkin();
+				// this.setMasonrySkin();
 			}
 		},
 		onBeforeRenderEmpty: function onBeforeRenderEmpty() {
@@ -380,6 +380,13 @@
 		},
 		getTemplateActionButton: function(templateData) {
 			var viewId = '#tmpl-elementor-template-library-insert-button';
+			if ( templateData.isPro && 'inactive' === templateData.proStatus ) {
+				viewId = '#tmpl-elementor-template-library-get-pro-button-mpdl';
+			}
+			if ( templateData.isPro && 'license_inactive' === templateData.proStatus ) {
+				viewId = '#tmpl-elementor-pro-template-library-activate-license-button-mpdl';
+			}
+			//viewId = elementor.hooks.applyFilters('elementor/editor/mpdl-template-library/template/action-button', viewId, templateData);
 			var template = Marionette.TemplateCache.get(viewId);
 			return Marionette.Renderer.render(template);
 		},
@@ -412,6 +419,7 @@
 	});
 
 	var Component = function(ComponentModal) {
+		var self;
 		Component.prototype = Object.create(ComponentModal && ComponentModal.prototype, {
 			constructor: {
 				value: Component,
@@ -426,6 +434,7 @@
 		var parent = Object.getPrototypeOf( Component.prototype );
 		Component.prototype.__construct = function(args) {
 			parent.__construct.call( this, args );
+			self = this;
 			elementor.on( 'document:loaded', this.onDocumentLoaded.bind( this ) );
 		};
 		Component.prototype.getNamespace = function() {
@@ -506,16 +515,15 @@
 			return true;
 		};
 		Component.prototype.show = function( args ) {
-			this.manager.modalConfig = args;
+			self.manager.modalConfig = args;
 	
 			if ( args.toDefault || ! $e.routes.restoreState( 'mpdl' ) ) {
-				$e.route( this.getDefaultRoute() );
+				$e.route( self.getDefaultRoute() );
 			}
 		};
 		Component.prototype.insertTemplate = function( args ) {
 			var autoImportSettings = false,
-				model = args.model,
-				self = this;
+				model = args.model;
 	
 			var withPageSettings = args.withPageSettings || null;
 	
@@ -524,16 +532,16 @@
 			}
 	
 			if ( null === withPageSettings && model.get( 'hasPageSettings' ) ) {
-				var insertTemplateHandler = this.getImportSettingsDialog();
+				var insertTemplateHandler = self.getImportSettingsDialog();
 	
 				insertTemplateHandler.showImportDialog( model );
 	
 				return;
 			}
 	
-			this.manager.layout.showLoadingView();
+			self.manager.layout.showLoadingView();
 	
-			this.manager.requestTemplateContent( model.get( 'source' ), model.get( 'template_id' ), {
+			self.manager.requestTemplateContent( model.get( 'source' ), model.get( 'template_id' ), {
 				data: {
 					with_page_settings: withPageSettings,
 				},
@@ -624,7 +632,7 @@
 		};
 
 		return Component;
-	}(elementorModules.common.ComponentModal);
+	}($e.modules.ComponentModalBase);
 
 
 	var TemplateLibraryManager = function TemplateLibraryManager() {
@@ -847,8 +855,8 @@
 	
 		var $templateLibBtnStyle = $( '<style />' ),
 			btnStyle = '';
-			btnStyle += '.elementor-add-section-area-button.mpdl-add-template-button {margin-left: 8px; vertical-align: bottom;}';
-			btnStyle += '.elementor-add-section-area-button.mpdl-add-template-button img { height: 40px; border-radius: 50%;}';
+			btnStyle += '.elementor-add-section-area-button.mpdl-add-template-button { margin-left: 8px; vertical-align: bottom; }';
+			btnStyle += '.elementor-add-section-area-button.mpdl-add-template-button img { height: 40px; }';
 
 		$templateLibBtnStyle.html( btnStyle );
 

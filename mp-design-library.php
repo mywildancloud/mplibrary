@@ -16,7 +16,7 @@
  * Plugin Name:       Mp Design Library
  * Plugin URI:        https://brandmarketers.id
  * Description:       Template library for elementor builder
- * Version:           1.0.3
+ * Version:           1.0.4
  * Author:            brandmarketers.id
  * Author URI:        https://brandmarketers.id
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'MP_DESIGN_LIBRARY_VERSION', '1.0.3' );
+define( 'MP_DESIGN_LIBRARY_VERSION', '1.0.4' );
 define( 'MP_DESIGN_LIBRARY_NAME', 'Mp Design Library' );
 define( 'MP_DESIGN_LIBRARY_ID', '2986' );
 define( 'MP_DESIGN_LIBRARY_BASENAME', plugin_basename(__FILE__));

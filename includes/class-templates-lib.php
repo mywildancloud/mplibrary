@@ -417,14 +417,14 @@ class MPDL_Templates_Lib {
 					#>
 					<div id="elementor-template-library-filter-toolbar-remote" class="elementor-template-library-filter-toolbar">
 						<# if ( 'page' === activeType ) { #>
-							<div id="elementor-template-library-order">
+							<!-- <div id="elementor-template-library-order">
 								<input type="radio" id="elementor-template-library-order-new" class="elementor-template-library-order-input" name="elementor-template-library-order" value="date">
 								<label for="elementor-template-library-order-new" class="elementor-template-library-order-label" title="<?php echo __( 'Show all the templates', 'mpdl' ); ?>"><?php echo esc_html__( 'New', 'mpdl' ); ?></label>
 								<input type="radio" id="elementor-template-library-order-trend" class="elementor-template-library-order-input" name="elementor-template-library-order" value="trendIndex">
 								<label for="elementor-template-library-order-trend" class="elementor-template-library-order-label" title="<?php echo __( "Show the templates in which only 'Elementor' elements are used.", 'mpdl' ); ?>"><?php echo esc_html__( 'Trend', 'mpdl' ); ?></label>
 								<input type="radio" id="elementor-template-library-order-popular" class="elementor-template-library-order-input" name="elementor-template-library-order" value="popularityIndex">
 								<label for="elementor-template-library-order-popular" class="elementor-template-library-order-label" title="<?php echo __( "Show the templates in which 'Elementor Pro' elements are used.", 'mpdl' ); ?>"><?php echo esc_html__( 'Popular', 'mpdl' ); ?></label>
-							</div>
+							</div> -->
 						<# } else {
 							var config = mpdl_templates_lib.templates.getConfig( activeType );
 							if ( config.categories ) { #>
